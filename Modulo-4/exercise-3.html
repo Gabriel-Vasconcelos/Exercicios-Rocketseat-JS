@@ -1,0 +1,106 @@
+	<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercise 3</title>
+	<meta charset = "utf-8">
+	<meta name="description" content="Exercise Rocketseat JS">
+  	<meta name="keywords" content="HTML,JavaScript">
+  	<meta name="author" content="Gabriel Vasconcelos">
+</head>
+<body>
+
+	<h2>Liste seus Repositórios</h2>
+
+	<input type="text" name="user">
+	<button onclick="listRepositories()">Buscar</button>
+
+	<ul>
+		
+	</ul>
+
+	<!-- Axios -->
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+	<!-- JavaScript -->
+	<script type="text/javascript">
+		
+		//3º exercício
+		/*
+			A partir do resultado do exemplo anterior adicione um indicador de carregamento em tela no lugar da lista apenas enquanto a requisição estiver acontecendo:
+
+
+			<li>Carregando...</li>
+
+
+			Além disso, adicione uma mensagem de erro em tela caso o usuário no Github não exista.
+
+			Dica: Quando o usuário não existe, a requisição irá cair no .catch com código de erro 404
+
+		*/
+
+		var inputElement = document.querySelector("input");
+		var listElement = document.querySelector("ul");
+
+
+		function renderRepositories(repos){
+
+			listElement.innerHTML = "";
+
+			for(repo of repos){
+				
+				var liElement = document.createElement("li");
+				var textElement = document.createTextNode(repo.name);
+
+				listElement.appendChild(liElement);
+				liElement.appendChild(textElement);
+
+			}
+
+		}
+
+
+		function errorRepositories(){
+
+			listElement.innerHTML = "";
+
+			var liElement = document.createElement("li");
+			var textElement = document.createTextNode("Usuário Inexistente");
+
+			listElement.appendChild(liElement);
+			liElement.appendChild(textElement);
+
+		}
+
+		function loadingRepositories(){
+
+			listElement.innerHTML = "";
+
+			var liElement = document.createElement("li");
+			var textElement = document.createTextNode("Carregando....");
+
+			listElement.appendChild(liElement);
+			liElement.appendChild(textElement);
+
+
+		}
+
+		function listRepositories(){
+			
+			var user = inputElement.value;
+
+			loadingRepositories();
+
+			axios.get("https://api.github.com/users/" + user + "/repos")
+				.then(function(response){
+					renderRepositories(response.data);
+				})
+				.catch(function(){
+					errorRepositories();
+
+				});
+		}
+
+	</script>
+
+</body>
+</html>

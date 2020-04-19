@@ -1,0 +1,92 @@
+	<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercise 2</title>
+	<meta charset = "utf-8">
+	<meta name="description" content="Exercise Rocketseat JS">
+  	<meta name="keywords" content="HTML,JavaScript">
+  	<meta name="author" content="Gabriel Vasconcelos">
+</head>
+<body>
+
+	<h2>Liste seus Repositórios</h2>
+
+	<input type="text" name="user">
+	<button onclick="listRepositories()">Buscar</button>
+
+	<ul>
+		
+	</ul>
+
+	<!-- Axios -->
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+	<!-- JavaScript -->
+	<script type="text/javascript">
+		
+		//2º exercício
+		/*
+			Crie uma tela com um <input> que deve receber o nome de um usuário no Github. Após digitar o
+			nome do usuário e clicar no botão buscar a aplicação deve buscar pela API do Github (conforme
+			URL abaixo) os dados de repositórios do usuário e mostrá-los em tela:
+			
+			URL de exemplo: https://api.github.com/users/diego3g/repos
+			
+			Basta alterar "diego3g" pelo nome do usuário.
+			
+
+			<input type="text" name="user">
+			<button onclick="">Adicionar</button>
+
+
+			Depois de preencher o input e adicionar, a seguinte lista deve aparecer abaixo:
+
+
+			<ul>
+			 <li>repo1</li>
+			 <li>repo2</li>
+			 <li>repo3</li>
+			 <li>repo4</li>
+			 <li>repo5</li>
+			</ul>
+
+		*/
+
+		var inputElement = document.querySelector("input");
+		var listElement = document.querySelector("ul");
+
+
+		function renderRepositories(repos){
+
+			for(repo of repos){
+				
+				var liElement = document.createElement("li");
+				var textElement = document.createTextNode(repo.name);
+
+				listElement.appendChild(liElement);
+				liElement.appendChild(textElement);
+
+			}
+
+		}
+
+
+		function listRepositories(){
+			
+			var user = inputElement.value;
+
+			axios.get("https://api.github.com/users/" + user + "/repos")
+				.then(function(response){
+					renderRepositories(response.data);
+				})
+				.catch(function(error){
+					console.log(error + user);
+				})
+				;
+
+		}
+
+	</script>
+
+</body>
+</html>

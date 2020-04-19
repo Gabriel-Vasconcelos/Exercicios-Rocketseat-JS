@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercise 1</title>
+	<meta charset = "utf-8">
+	<meta name="description" content="Exercise Rocketseat JS">
+  	<meta name="keywords" content="HTML,JavaScript">
+  	<meta name="author" content="Gabriel Vasconcelos">
+  	
+</head>
+<body>
+
+
+<script type="text/javascript">
+	
+	// 1º exercício
+	/*
+		Crie uma função que dado o objeto a seguir:
+	
+		var endereco = {
+		rua: "Rua dos pinheiros",
+		numero: 1293,
+		bairro: "Centro",
+		cidade: "São Paulo",
+		uf: "SP"
+		};
+		
+		Retorne o seguinte conteúdo:
+
+		O usuário mora em São Paulo / SP, no bairro Centro, na rua "Rua dos Pinheiros" com
+		nº 1293.
+
+	*/
+
+
+
+
+	var endereco = {
+		rua: "Rua dos Pinheiros",
+		numero: 1293,
+		bairro: "Centro",
+		cidade: "São Paulo",
+		uf: "SP"
+	};
+
+
+	function retornaEndereco(){
+
+		return console.log("O usuário mora em " + endereco.cidade + " / " + endereco.uf + ", no bairo " + endereco.bairro + ", na rua '" + endereco.rua + "' com n° " + endereco.numero);
+	}
+
+	retornaEndereco();
+
+
+</script>
+
+</body>
+</html>

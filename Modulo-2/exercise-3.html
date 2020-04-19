@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercise 3</title>
+	<meta charset = "utf-8">
+	<meta name="description" content="Exercise Rocketseat JS">
+  	<meta name="keywords" content="HTML,JavaScript">
+  	<meta name="author" content="Gabriel Vasconcelos">
+</head>
+<body>
+
+	<ul>
+		
+	</ul>
+ 
+
+	<script type="text/javascript">
+		
+		//3º exercício
+		/*
+			A partir do seguinte vetor:
+			
+			var nomes = ["Diego", "Gabriel", "Lucas"];
+			
+			Preencha uma lista (<ul>) no HTML com os itens da seguinte forma:
+			● Diego
+			● Gabriel
+			● Lucas
+
+		*/
+
+		var nomes = ["Diego", "Gabriel", "Lucas"];
+
+		function generateItem(){
+
+			for(nome of nomes){
+				
+				var listElement = document.querySelector("ul");
+				var itemElement = document.createElement("li");
+				var textElement = document.createTextNode(nome);
+
+				listElement.appendChild(itemElement);
+				itemElement.appendChild(textElement);
+
+			}
+
+		}
+
+		generateItem();
+
+
+	</script>
+
+</body>
+</html>

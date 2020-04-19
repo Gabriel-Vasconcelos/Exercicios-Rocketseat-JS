@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercise 1</title>
+	<meta charset = "utf-8">
+	<meta name="description" content="Exercise Rocketseat JS">
+  	<meta name="keywords" content="HTML,JavaScript">
+  	<meta name="author" content="Gabriel Vasconcelos">
+</head>
+<body>
+
+	<button name="button">Generate Square</button>
+	<br>
+ 
+
+	<script type="text/javascript">
+		
+		//1º exercício
+		/*
+			Crie um botão que ao ser clicado cria um novo elemento em tela com a forma de um quadrado
+			vermelho com 100px de altura e largura. Sempre que o botão for clicado um novo quadrado deve
+			aparecer na tela.
+		*/
+
+		var buttonElement = document.querySelector("button[name = button]");
+
+		function createSquare(){
+			
+			var containerElement = document.querySelector("body");
+			var squareElement = document.createElement("div");
+
+			containerElement.appendChild(squareElement);
+
+			squareElement.style.height = "100px";
+			squareElement.style.width = "100px";
+			squareElement.style.backgroundColor = "red";
+			squareElement.style.display = "inline-block";
+		}
+
+		buttonElement.onclick = function (){
+			createSquare();
+		}
+
+
+	</script>
+
+</body>
+</html>
